@@ -18,6 +18,6 @@ fetch('https://www.tiktok.com/api/item/detail/?aid=1988&app_id=1180&app_language
   mode: 'no-cors',
   credentials: 'include'
 })
-    .then((data) => data.json())
+    .then((data) => data.json());
     .then((result) => console.log(result.itemInfo.itemStruct.video.playAddr))
           

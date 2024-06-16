@@ -16,7 +16,7 @@ const head = {
 fetch('https://www.tiktok.com/api/item/detail/?aid=1988&app_id=1180&app_language=id-ID&app_name=tiktok_web&browser_language=id&browser_name=Mozilla&browser_online=true&browser_platform=Linux%20armv81&browser_version=5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36&channel=tiktok_web&clientABVersions=70508271&clientABVersions=72139452&clientABVersions=72224360&clientABVersions=72313476&clientABVersions=72350762&clientABVersions=72373487&clientABVersions=72375446&clientABVersions=72380604&clientABVersions=72402045&client_ab_versions=70508271&client_ab_versions=72139452&client_ab_versions=72224360&client_ab_versions=72313476&client_ab_versions=72350762&client_ab_versions=72373487&client_ab_versions=72375446&client_ab_versions=72380604&client_ab_versions=72402045&cookie_enabled=true&coverFormat=0&device_id=7380790376980039186&device_platform=web_mobile&focus_state=true&from_page=video&history_len=2&is_fullscreen=false&is_page_visible=true&itemId=7353021273494048006&item_id=7353021273494048006&language=id-ID&os=android&priority_region=&referer=&region=ID&screen_height=806&screen_width=360&sourceType=33&traffic_type=0&tz_name=Asia%2FJakarta&uCode=&u_code=&user_info_type=1&web_id=7380790376980039186&webcast_language=id-ID&msToken=JXo8WDJn_rVXcXqp2PGvlvXV6LHoxGYfFrqE5x0Am7_U9qhkw8RmO9udk9zNwz9CTDCVx7wUv8lqN9T-_665UEA6etVR4iiZ0e0yJ_o2qYnx8o1HQl82cxjg4LiPrV4gT8rnIKsqrgsA&X-Bogus=DFSzswVOjM2ANVt2tUOxZUadxO6h&_signature=_02B4Z6wo00001NjY7.wAAIDA1aAXm9f9KoDY2OtAAFBda9',{
    method: 'get',
    headers: head,
-  mode: 'cors',
+  mode: 'no-cors',
   credentials: 'include'
 })
     .then((data) => data.json())

@@ -1,11 +1,3 @@
-const express = require('express');
-const app = express();
-const port = 3001; // Port yang digunakan (bisa diganti)
-
-// Middleware untuk menangani permintaan yang masuk
-app.get('/server.js', (req, res) => {
-  res.send('Hello, World!');
-});
 const head = {
   'User-Agent': "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
   'sec-ch-ua': "\"Not-A.Brand\";v=\"99\", \"Chromium\";v=\"124\"",
@@ -24,8 +16,4 @@ fetch('https://www.tiktok.com/api/item/detail/?aid=1988&app_id=1180&app_language
    headers: head})
     .then((data) => data.json())
     .then((result) => console.log(result.itemInfo.itemStruct.video.playAddr))
-
-// Menjalankan server
-app.listen(port, () => {
-  console.log(`Server berjalan di http://localhost:${port}`);
-});
+          

@@ -1,23 +1,96 @@
-alert('Memasuki mode js')
-const head = {
-  'User-Agent': "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
-  'sec-ch-ua': "\"Not-A.Brand\";v=\"99\", \"Chromium\";v=\"124\"",
-  'sec-ch-ua-mobile': "?1",
-  'sec-ch-ua-platform': "\"Android\"",
-  'sec-fetch-site': "same-origin",
-  'sec-fetch-mode': "cors",
-  'sec-fetch-dest': "empty",
-  'Access-Control-Allow-Origin': '*',
-  'referer': "https://www.tiktok.com/@rief.code/video/7353021273494048006?_t=8nEscRsDhsl&_r=1",
-  'accept-language': "id-ID,id;q=0.9,en-US;q=0.8,en;q=0.7",
-  'Cookie': "tt_chain_token=pBAno1oBR9xzmvIr7j8YiA==; tiktok_webapp_theme=light; odin_tt=33bb6db104ef894e741235579ea023d40a4b7000fa5e8fb57e41887ed8a61fc48573ae839737b47019f36ba1bf06866026ff148739b2a4b766dd64919148ff0b2a538a4a99438870d859c5829c721588; ak_bmsc=7408E9B477871F67F8D67E3A01B9A0A3~000000000000000000000000000000~YAAQDA81F4gWbQmQAQAA6bRoHxjuN+cJ5ywndvYVGpaSCZqgmDv307gqF9BOMBsBS5Mh4hAwLc8JzPHe7Xwg4GjuU+ceSyjdj0wnsm9l1FC2NIV6MPYY1GEzgVVooyxvFwyXpxEP4X4TQ1BE1SsXPk3I8n7RvUV3+cj6t6h2DbuM7HYLmfo3Rj3ls9E68LpvlhCAo5Jkxx8/dDIesWRYTdCyCAS5KTrhH40l3O8dyV24e2ZpoEaEuF1iXnG5ghozBePgS0Y8RiqvbntLLB2Gv4Ftf/4T6Zif/243qvkRW3zGy3wdU6llaRNc8Lequ8CwBYZzc2w5hzdBBAU7Wk0NFjsY+fij8AgfWQmqvG3sX0Ac0Iv1c7Y7iSferSATdjXU+CB17d7wingVxKB990ylANVjySNzX+VjlkbAkw==; msToken=JXo8WDJn_rVXcXqp2PGvlvXV6LHoxGYfFrqE5x0Am7_U9qhkw8RmO9udk9zNwz9CTDCVx7wUv8lqN9T-_665UEA6etVR4iiZ0e0yJ_o2qYnx8o1HQl82cxjg4LiPrV4gT8rnIKsqrgsA; tt_csrf_token=3kQ50JVf-8BkWksmCKB8RPKdPRNjv2HDxNww; msToken=KOeSGRleZvkq9bXrilfvDYgXlQpRRH6PFETuVWw-7b-a5XXps1zTnMZ_Sl6KnyT50huKjT1pUW0-WLpzO8DL9B211JXvIP2MOxOYIIVz-nMuGaKfH4NemYBVxmGfSz8SjrILWBQEmlcU; bm_sv=1A8D22AAE6E467ECDCC8261E614FC9A9~YAAQDA81FzglbQmQAQAAauNqHxg0+G+gbNxmk677xmX13zIi+LLgtmk+qtUJnUzB9mF1H7M9vLzVTs41iRrDZP8Sa/ttHSdPTETZN3DMzDp3TsQCHMTuq/zBna+SNLGzrWPYKbwo88TfjRzLyrPiMBYM0vGnQWVw7rZTIH9qcyTXEtp/5xzMgnjOOC8n+0AZlHzHe0sP22Jeah9EmmCvQkLCA5TEUj3XCQa+wzDJO4FXT4dqJS1iG0xNpBKGVI7u~1; ttwid=1%7CoQlh_RGL8Sd5cdK5RU5PWFlPUSLG00L752SJf41YKTE%7C1718514030%7C3336f346c9d25a2c8ad2b0665866c622cced156b48a57d2b5e2995b4a4bfb60d"
+const express = require('express');
+const bodyParser = require('body-parser');
+const axios = require('axios');
+const { Buffer } = require('safe-buffer');
+const { get } = require('systeminformation');
+const app = express();
+const PORT = process.env.PORT || 3000;
+
+// Middleware untuk parsing body dari request
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Mengirimkan halaman HTML form
+app.get('/tes', (req, res) => {
+    res.send('haii')
+//File(__dirname + '/index.html');
+});
+
+// Menangani POST request dari form URL
+app.post('/download', (req, res) => {
+    const url = req.body.url;
+    console.log(`URL yang diterima: ${url}`);
+    var urlvidi0 = apacoba(req, res, url)
+});
+
+async function apacoba(req, res, link){
+    var idz = 'video/';
+    if (link.includes(idz)){
+      var url = await regexurl(link)
+    } else {
+       const get1 = await axios(link,{
+       method:'get',
+       headers:{
+            'accept': "*/*",
+            'accept-language': 'id,en;q=0.9,en-GB;q=0.8,en-US;q=0.7',
+            'cookie': 'tt_chain_token=zcCEGW55CjWsgf6gIV9gHA==; odin_tt=1ef1485ae5eb6c9e79c9a0fc0700f8b891c91bd3621cc35044e6513de1e1b91979871b84bc93b8fe0681ae6158aae532f8ff60b3c16a60338a332d5021a1f567930d1e71b703e391979e814f6f13f51e; passport_csrf_token=7849d343c2a77cc680e2cdd011ac3128; passport_csrf_token_default=7849d343c2a77cc680e2cdd011ac3128; _ttp=2i0X4DJG8xkx1HsPlJ1Acwxkp6s; tt_csrf_token=jprJbKFT-qMtS-R400NdVPdC5rEYYPzLBikY; ak_bmsc=6645B8F05C14827C0495223564F0D435~000000000000000000000000000000~YAAQHQ81FxbMNTqQAQAAOJtJQBg9Cpjv7Scgv6pbk89U7I00h7C8Kj6yp804d83YE5Mscf5rwSaAbTFdCHra2Od+6v7bjmuIUpO7VpVE9+3ZjNiX+LRu0YwDqx5QnRNVuGbMXGYu0tT4BWc7Cf7rVPyjDRIhjhll+teOeUmthL/TSy/QCDtBACvwPNZNQQc1VIkbe5yRpJkcQP8ZsS7CcZ+CpgA8Mq7/cYwHf0V3N6sIZlHtYSiG2sbBShnG2JOS3UiAUgv9m0RGv+O5b4a2HCEAit2ixsnoiHD+M4nEKopSu8FM1tN+5FVPWPt27X91ykfAGa8PFJ/oP8mCowH9aK6bVAsvX/6PgD2HXrkP5Gx9BzcRZjXl+0Hd5u66tfo+1ysePMO9DRt+Enw=; ttwid=1%7Cag-HVdjDKIjq4KjjbxG7m6wva6CMARWQ98gbS2Nkj7s%7C1719066039%7C5fbe83245bc1357380b3e764a2da52cacfa3b6ded6c0f6382794a60325f5aaad; bm_sv=96B0E119B043DEBDC35E652FC483A70E~YAAQFw81F+MKZjuQAQAA83VTQBioDWTQoOYXvn554cWw4mDkxLYhN/GnRVx8b97CY+mL7y5qbKd8tQ6D0+IhtQClTskh0izsRzM6frd+dVqfOLxpljr8A3dVnQG7YDCuF41WXaRVe23q/iILpQ5Z720HxSmIz6ZHOSuG/4/duKFPnaKMwz8z8f53TlH99pRpLHzF0fhJ+YNex/G6YGBI6iZM0Inda+XSrZBkol1KDh68sylVgEFZoJ6bgRelfE9j~1; s_v_web_id=verify_lxq7nauu_QG2aNNCL_wzvR_4JMK_BjWG_tea4t12sX7jw; msToken=WtpZ-911HrWgz99t1JAhHqPCOfIL1u_m3SbKoAiLTROFegnKBlUHt0QQwdJ6GMQjHx97uOoXDc1jMVv01_x81I3FqvCt1nih107rIb0BNxEm6lHTp3T1pqNzspE=',
+            'priority': 'i',
+      }
+    })
+    var url = await regexurl(get1.request.res.responseUrl)
+   }
+   Ip(req, res, url)
 }
-fetch('https://www.tiktok.com/api/item/detail/?aid=1988&app_id=1180&app_language=id-ID&app_name=tiktok_web&browser_language=id&browser_name=Mozilla&browser_online=true&browser_platform=Linux%20armv81&browser_version=5.0%20%28Linux%3B%20Android%2010%3B%20K%29%20AppleWebKit%2F537.36%20%28KHTML%2C%20like%20Gecko%29%20Chrome%2F124.0.0.0%20Mobile%20Safari%2F537.36&channel=tiktok_web&clientABVersions=70508271&clientABVersions=72139452&clientABVersions=72224360&clientABVersions=72313476&clientABVersions=72350762&clientABVersions=72373487&clientABVersions=72375446&clientABVersions=72380604&clientABVersions=72402045&client_ab_versions=70508271&client_ab_versions=72139452&client_ab_versions=72224360&client_ab_versions=72313476&client_ab_versions=72350762&client_ab_versions=72373487&client_ab_versions=72375446&client_ab_versions=72380604&client_ab_versions=72402045&cookie_enabled=true&coverFormat=0&device_id=7380790376980039186&device_platform=web_mobile&focus_state=true&from_page=video&history_len=2&is_fullscreen=false&is_page_visible=true&itemId=7353021273494048006&item_id=7353021273494048006&language=id-ID&os=android&priority_region=&referer=&region=ID&screen_height=806&screen_width=360&sourceType=33&traffic_type=0&tz_name=Asia%2FJakarta&uCode=&u_code=&user_info_type=1&web_id=7380790376980039186&webcast_language=id-ID&msToken=JXo8WDJn_rVXcXqp2PGvlvXV6LHoxGYfFrqE5x0Am7_U9qhkw8RmO9udk9zNwz9CTDCVx7wUv8lqN9T-_665UEA6etVR4iiZ0e0yJ_o2qYnx8o1HQl82cxjg4LiPrV4gT8rnIKsqrgsA&X-Bogus=DFSzswVOjM2ANVt2tUOxZUadxO6h&_signature=_02B4Z6wo00001NjY7.wAAIDA1aAXm9f9KoDY2OtAAFBda9',{
-   method: 'get',
-   headers: head,
-  mode: 'no-cors',
-  credentials: 'include'
-})
-    .then((data) => data.json());
-    .then((result) => console.log(result.itemInfo.itemStruct.video.playAddr))
-          
+async function regexurl(link){
+    const get1 = await axios(link,{
+        method:'get',
+        headers:{
+            'accept': "*/*",
+            'accept-language': 'id,en;q=0.9,en-GB;q=0.8,en-US;q=0.7',
+            'cookie': 'tt_chain_token=zcCEGW55CjWsgf6gIV9gHA==; odin_tt=1ef1485ae5eb6c9e79c9a0fc0700f8b891c91bd3621cc35044e6513de1e1b91979871b84bc93b8fe0681ae6158aae532f8ff60b3c16a60338a332d5021a1f567930d1e71b703e391979e814f6f13f51e; passport_csrf_token=7849d343c2a77cc680e2cdd011ac3128; passport_csrf_token_default=7849d343c2a77cc680e2cdd011ac3128; _ttp=2i0X4DJG8xkx1HsPlJ1Acwxkp6s; tt_csrf_token=jprJbKFT-qMtS-R400NdVPdC5rEYYPzLBikY; ak_bmsc=6645B8F05C14827C0495223564F0D435~000000000000000000000000000000~YAAQHQ81FxbMNTqQAQAAOJtJQBg9Cpjv7Scgv6pbk89U7I00h7C8Kj6yp804d83YE5Mscf5rwSaAbTFdCHra2Od+6v7bjmuIUpO7VpVE9+3ZjNiX+LRu0YwDqx5QnRNVuGbMXGYu0tT4BWc7Cf7rVPyjDRIhjhll+teOeUmthL/TSy/QCDtBACvwPNZNQQc1VIkbe5yRpJkcQP8ZsS7CcZ+CpgA8Mq7/cYwHf0V3N6sIZlHtYSiG2sbBShnG2JOS3UiAUgv9m0RGv+O5b4a2HCEAit2ixsnoiHD+M4nEKopSu8FM1tN+5FVPWPt27X91ykfAGa8PFJ/oP8mCowH9aK6bVAsvX/6PgD2HXrkP5Gx9BzcRZjXl+0Hd5u66tfo+1ysePMO9DRt+Enw=; ttwid=1%7Cag-HVdjDKIjq4KjjbxG7m6wva6CMARWQ98gbS2Nkj7s%7C1719066039%7C5fbe83245bc1357380b3e764a2da52cacfa3b6ded6c0f6382794a60325f5aaad; bm_sv=96B0E119B043DEBDC35E652FC483A70E~YAAQFw81F+MKZjuQAQAA83VTQBioDWTQoOYXvn554cWw4mDkxLYhN/GnRVx8b97CY+mL7y5qbKd8tQ6D0+IhtQClTskh0izsRzM6frd+dVqfOLxpljr8A3dVnQG7YDCuF41WXaRVe23q/iILpQ5Z720HxSmIz6ZHOSuG/4/duKFPnaKMwz8z8f53TlH99pRpLHzF0fhJ+YNex/G6YGBI6iZM0Inda+XSrZBkol1KDh68sylVgEFZoJ6bgRelfE9j~1; s_v_web_id=verify_lxq7nauu_QG2aNNCL_wzvR_4JMK_BjWG_tea4t12sX7jw; msToken=WtpZ-911HrWgz99t1JAhHqPCOfIL1u_m3SbKoAiLTROFegnKBlUHt0QQwdJ6GMQjHx97uOoXDc1jMVv01_x81I3FqvCt1nih107rIb0BNxEm6lHTp3T1pqNzspE=',
+            'priority': 'i',
+        }
+    })
+    var item = '"UrlList":(.*)/'
+    const urlist = get1.data.match(item)
+    const linkpoke = urlist[1]
+    const link3 = linkpoke.split(",")[1]
+    const done1 = link3.replace('"','').replace('"]','').replace(/\\u002F/g, "/")
+   // console.log(get1.request.res.responseUrl)
+    return done1;
+}
+
+
+async function Ip(req, res, link){
+    const url = await axios(link,{
+        method:'get',
+        responseType: 'arraybuffer',
+        headers: {
+            'accept': '*/*',
+            'accept-language': 'id,en;q=0.9,en-GB;q=0.8,en-US;q=0.7',
+            'cookie': 'tt_chain_token=zcCEGW55CjWsgf6gIV9gHA==; odin_tt=1ef1485ae5eb6c9e79c9a0fc0700f8b891c91bd3621cc35044e6513de1e1b91979871b84bc93b8fe0681ae6158aae532f8ff60b3c16a60338a332d5021a1f567930d1e71b703e391979e814f6f13f51e; passport_csrf_token=7849d343c2a77cc680e2cdd011ac3128; passport_csrf_token_default=7849d343c2a77cc680e2cdd011ac3128; _ttp=2i0X4DJG8xkx1HsPlJ1Acwxkp6s; tt_csrf_token=jprJbKFT-qMtS-R400NdVPdC5rEYYPzLBikY; ak_bmsc=6645B8F05C14827C0495223564F0D435~000000000000000000000000000000~YAAQHQ81FxbMNTqQAQAAOJtJQBg9Cpjv7Scgv6pbk89U7I00h7C8Kj6yp804d83YE5Mscf5rwSaAbTFdCHra2Od+6v7bjmuIUpO7VpVE9+3ZjNiX+LRu0YwDqx5QnRNVuGbMXGYu0tT4BWc7Cf7rVPyjDRIhjhll+teOeUmthL/TSy/QCDtBACvwPNZNQQc1VIkbe5yRpJkcQP8ZsS7CcZ+CpgA8Mq7/cYwHf0V3N6sIZlHtYSiG2sbBShnG2JOS3UiAUgv9m0RGv+O5b4a2HCEAit2ixsnoiHD+M4nEKopSu8FM1tN+5FVPWPt27X91ykfAGa8PFJ/oP8mCowH9aK6bVAsvX/6PgD2HXrkP5Gx9BzcRZjXl+0Hd5u66tfo+1ysePMO9DRt+Enw=; ttwid=1%7Cag-HVdjDKIjq4KjjbxG7m6wva6CMARWQ98gbS2Nkj7s%7C1719066039%7C5fbe83245bc1357380b3e764a2da52cacfa3b6ded6c0f6382794a60325f5aaad; bm_sv=96B0E119B043DEBDC35E652FC483A70E~YAAQFw81F+MKZjuQAQAA83VTQBioDWTQoOYXvn554cWw4mDkxLYhN/GnRVx8b97CY+mL7y5qbKd8tQ6D0+IhtQClTskh0izsRzM6frd+dVqfOLxpljr8A3dVnQG7YDCuF41WXaRVe23q/iILpQ5Z720HxSmIz6ZHOSuG/4/duKFPnaKMwz8z8f53TlH99pRpLHzF0fhJ+YNex/G6YGBI6iZM0Inda+XSrZBkol1KDh68sylVgEFZoJ6bgRelfE9j~1; s_v_web_id=verify_lxq7nauu_QG2aNNCL_wzvR_4JMK_BjWG_tea4t12sX7jw; msToken=WtpZ-911HrWgz99t1JAhHqPCOfIL1u_m3SbKoAiLTROFegnKBlUHt0QQwdJ6GMQjHx97uOoXDc1jMVv01_x81I3FqvCt1nih107rIb0BNxEm6lHTp3T1pqNzspE=',
+            'priority': 'i',
+            'range': 'bytes=0-',
+            // 'referer': 'https://v16-webapp-prime.tiktok.com/video/tos/useast2a/tos-useast2a-v-0068/oIBUu0fWAyVzziACyu5AAikziNEgaEWoIwBAVJ/?a=1988&bti=NDU3ZjAwOg%3D%3D&ch=0&cr=3&dr=0&lr=all&cd=0%7C0%7C0%7C&cv=1&br=20712&bt=10356&ds=4&ft=4fUEKMO_8Zmo0YZRP-4jVWB7ypWrKsd.&mime_type=video_mp4&qs=13&rc=am9lOHM5cms5czMzNzczM0Bpam9lOHM5cms5czMzNzczM0BtLWpeMmRjamtgLS1kMTZzYSNtLWpeMmRjamtgLS1kMTZzcw%3D%3D&btag=e00050000&expire=1719238435&l=20240622141135D0C2A86A7A0C5F30BDEA&ply_type=2&policy=2&signature=8077fbf574e68d61eee5c5ffd5ae6500&tk=tt_chain_token',
+            // 'sec-ch-ua': '"Not/A)Brand";v="8", "Chromium";v="126", "Microsoft Edge";v="126"',
+            'sec-ch-ua-mobile': '?1',
+            'sec-ch-ua-platform': '"Android"',
+            'sec-fetch-dest': 'video',
+            'sec-fetch-mode': 'no-cors',
+            'sec-fetch-site': 'same-origin',
+            'user-agent': 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Mobile Safari/537.36 Edg/126.0.0.0'
+          }
+    });
+    const video = Buffer.from(url.data);
+    console.log('Dikirimkan')
+    res.set({
+        'Accept-Ranges':'bytes',
+        'Content-Type': 'video/mp3',
+        'Content-Length': video.length, 
+        'Content-Disposition': 'inline; filename="video.mp4"'
+    });
+    res.send(video);
+}
+// Mulai server pada port yang ditentukan
+app.listen(PORT, () => {
+    console.log(`Server berjalan di http://localhost:${PORT}`);
+});

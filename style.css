@@ -1,0 +1,146 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .navbar {
+    background-color: black;
+    color: #fff;
+    padding: 15px 0;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  .brand {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #fff;
+  }
+  
+  .nav-list {
+    list-style-type: none;
+    display: flex;
+  }
+  
+  .nav-list li {
+    margin: 0 10px;
+  }
+  
+  .nav-list li a {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-list li a:hover {
+    color: rgb(21, 153, 153)
+  }
+  
+  .container-post {
+    /* max-width: 600px; */
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  form label {
+    font-weight: bold;
+  }
+  
+  form input[type="url"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  form button[type="submit"] {
+    background-color: black;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  form button[type="submit"]:hover {
+    background-color: rgb(35, 25, 129);
+  }
+  
+  @media screen and (max-width: 768px) {
+    .nav-list {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      background-color: rgb(50, 50, 50);
+      text-align: center;
+      z-index: 1000;
+    }
+    
+    .nav-list.active {
+      display: flex;
+      background-color: black;
+      padding: 50px;
+    }
+    
+    .nav-list li {
+      margin: 10px 0;
+    }
+    
+    .burger {
+      display: block;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      z-index: 2000;
+    }
+    
+    .burger-bar {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: #fff;
+      margin: 5px auto;
+      transition: all 0.3s ease;
+    }
+    
+    .burger.active .burger-bar:nth-child(2) {
+      opacity: 0;
+    }
+    
+    .burger.active .burger-bar:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    
+    .burger.active .burger-bar:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  }
+  
